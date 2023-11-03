@@ -6,6 +6,7 @@ namespace sdds
 {
 	/*No-argument constructor*/
 	Station::Station(){}
+
 	/*One-argument Constructor
 	Parameters: const string& str*/
 	Station::Station(const std::string& str)

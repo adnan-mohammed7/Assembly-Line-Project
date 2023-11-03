@@ -57,6 +57,9 @@ namespace sdds
 			}
 		}
 
+		//Updaes field width if it is less than the current token length
+		m_widthField < result.length() ? m_widthField = result.length() : m_widthField;
+
 		return result;
 	}
 	/*sets class memeber m_delimeter to received argument
