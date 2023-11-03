@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Station.h"
+#include "Utilities.h"
 
 size_t sdds::Station::m_widthField = 0;
 size_t sdds::Station::id_generator = 0;
@@ -15,6 +16,14 @@ namespace sdds
 	Parameters: const string& str*/
 	Station::Station(const std::string& str)
 	{
+		Utilities util;
+		size_t pos = 0;
+		bool more = true;
+
+		m_name = util.extractToken(str, pos, more);
+		m_serialNumber = std::stoul(util.extractToken(str, pos, more));
+		m_quantity = std::stoul(util.extractToken(str, pos, more));
+		m_widthField > util.getFieldWidth() ? m_widthField : m_widthField = util.getFieldWidth();
 	}
 	/*Retruns station name*/
 	const std::string& Station::getItemName() const
