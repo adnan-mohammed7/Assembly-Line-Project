@@ -4,10 +4,13 @@
 
 namespace sdds
 {
+	/*Sets the field width for the instance to the received argument
+	Parameters: size_t newWidth*/
 	void Utilities::setFieldWidth(size_t newWidth)
 	{
 		m_widthField = newWidth;
 	}
+	/*Returns instance's field width*/
 	size_t Utilities::getFieldWidth() const
 	{
 		return m_widthField;
@@ -16,10 +19,13 @@ namespace sdds
 	{
 		return std::string();
 	}
+	/*sets class memeber m_delimeter to received argument
+	Parameters: char newDelimiter*/
     void Utilities::setDelimiter(char newDelimiter)
 	{
 		m_delimiter = newDelimiter;
 	}
+	/*Retruns class delimeter(m_delimiter)*/
 	char Utilities::getDelimiter()
 	{
 		return m_delimiter;
