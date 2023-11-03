@@ -14,6 +14,8 @@ namespace sdds
 		return result;
 	}
 
+	Utilities::Utilities(){}
+
 	/*Sets the field width for the instance to the received argument
 	Parameters: size_t newWidth*/
 	void Utilities::setFieldWidth(size_t newWidth)

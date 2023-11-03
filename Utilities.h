@@ -14,6 +14,9 @@ namespace sdds
 		static char m_delimiter;
 		std::string trim(const std::string& str);
 	public:
+		//Default Constructor
+		Utilities();
+
 		//Instance Functions
 		void setFieldWidth(size_t newWidth);
 		size_t getFieldWidth() const;
