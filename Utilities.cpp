@@ -2,6 +2,9 @@
 
 #include"Utilities.h"
 
+//Initializing m_delimeter(class variable)
+char sdds::Utilities::m_delimiter = ',';
+
 namespace sdds
 {
 	/*Self-Developed function which removes prevailing and trailing spaces from a string
