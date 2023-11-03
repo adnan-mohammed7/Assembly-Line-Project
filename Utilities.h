@@ -12,6 +12,7 @@ namespace sdds
 
 		//Class Variable
 		static char m_delimiter;
+		std::string trim(const std::string& str);
 	public:
 		//Instance Functions
 		void setFieldWidth(size_t newWidth);
