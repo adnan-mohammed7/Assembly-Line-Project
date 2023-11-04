@@ -20,9 +20,11 @@ namespace sdds
 		size_t pos = 0;
 		bool more = true;
 
+		m_id = ++id_generator;
 		m_name = util.extractToken(str, pos, more);
 		m_serialNumber = std::stoul(util.extractToken(str, pos, more));
 		m_quantity = std::stoul(util.extractToken(str, pos, more));
+		m_description = util.extractToken(str, pos, more);
 		m_widthField > util.getFieldWidth() ? m_widthField : m_widthField = util.getFieldWidth();
 	}
 	/*Retruns station name*/
@@ -51,8 +53,11 @@ namespace sdds
 	/*Displays Station object to ostream*/
 	void Station::display(std::ostream& os, bool full) const
 	{
+		os.setf(std::ios::left);
+		os.fill('0');
 		os.width(3);
 		os << m_id << " | ";
+		os.fill(' ');
 		os.width(m_widthField);
 		os << m_name << " | ";
 		os.width(6);

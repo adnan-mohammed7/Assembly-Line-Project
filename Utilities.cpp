@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 
+#include<iostream>
 #include"Utilities.h"
 
 //Initializing m_delimeter(class variable)
@@ -13,7 +14,10 @@ namespace sdds
 	{
 		//Removes spaces
 		std::string result{};
-		result = str.substr(str.find_first_not_of(' '), (str.find_last_not_of(' ') - str.find_first_not_of(' ') + 1));
+		if (str != "")
+		{
+			result = str.substr(str.find_first_not_of(' '), (str.find_last_not_of(' ') - str.find_first_not_of(' ') + 1));
+		}
 		return result;
 	}
 
@@ -39,27 +43,40 @@ namespace sdds
 		size_t delimeterPos = str.find(m_delimiter, next_pos);
 		std::string result{};
 		
-		if (delimeterPos != std::string::npos)
+		if (str[next_pos] == m_delimiter)
 		{
-			result = trim(str.substr(next_pos, (delimeterPos - next_pos)));
-			delimeterPos = str.find(m_delimiter, delimeterPos + 1);
-
-			if (delimeterPos == std::string::npos)
+			more = false;
+			throw "Error!";
+		}
+		else
+		{
+			if (str == "")
 			{
 				more = false;
+				std::cout << "Error! Empty String";
+				result = "";
 			}
-
-		}
-		else {
-			if (str[next_pos] == m_delimiter)
+			
+			if (delimeterPos != std::string::npos)
 			{
-				throw "Error!";
+				result = trim(str.substr(next_pos, (delimeterPos - next_pos)));
+
+				if (delimeterPos == std::string::npos)
+				{
+					more = false;
+					next_pos++;
+				}
+				else {
+					next_pos = (delimeterPos + 1);
+				}
+
 			}
 			else {
-				result = str.substr(next_pos);
+				more = false;
+				result = trim(str.substr(next_pos));
 			}
 		}
-
+		
 		//Updaes field width if it is less than the current token length
 		m_widthField < result.length() ? m_widthField = result.length() : m_widthField;
 
