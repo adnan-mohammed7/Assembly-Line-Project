@@ -40,46 +40,41 @@ namespace sdds
 	bool& more*/
 	std::string Utilities::extractToken(const std::string& str, size_t& next_pos, bool& more)
 	{
-		size_t delimeterPos = str.find(m_delimiter, next_pos);
 		std::string result{};
-		
-		if (str[next_pos] == m_delimiter)
+		if (str == "")
 		{
 			more = false;
-			throw "Error!";
+			std::cout << "Error! Empty String";
+			result = "";
 		}
 		else
 		{
-			if (str == "")
+			if (more)
 			{
-				more = false;
-				std::cout << "Error! Empty String";
-				result = "";
-			}
-			
-			if (delimeterPos != std::string::npos)
-			{
-				result = trim(str.substr(next_pos, (delimeterPos - next_pos)));
+				size_t nextDelimeterPos = str.find(m_delimiter, next_pos);
 
-				if (delimeterPos == std::string::npos)
+				if (str[next_pos] == m_delimiter)
 				{
 					more = false;
-					next_pos++;
+					throw "Error!";
 				}
-				else {
-					next_pos = (delimeterPos + 1);
-				}
+				else
+				{
+					if (nextDelimeterPos != std::string::npos)
+					{
+						result = trim(str.substr(next_pos, (nextDelimeterPos - next_pos)));
 
-			}
-			else {
-				more = false;
-				result = trim(str.substr(next_pos));
+						next_pos = (nextDelimeterPos + 1);
+					}
+					else {
+						more = false;
+						result = trim(str.substr(next_pos));
+					}
+				}
+				//Updaes field width if it is less than the current token length
+				m_widthField < result.length() ? m_widthField = result.length() : m_widthField;
 			}
 		}
-		
-		//Updaes field width if it is less than the current token length
-		m_widthField < result.length() ? m_widthField = result.length() : m_widthField;
-
 		return result;
 	}
 	/*sets class memeber m_delimeter to received argument

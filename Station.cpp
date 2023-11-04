@@ -20,12 +20,15 @@ namespace sdds
 		size_t pos = 0;
 		bool more = true;
 
-		m_id = ++id_generator;
-		m_name = util.extractToken(str, pos, more);
-		m_serialNumber = std::stoul(util.extractToken(str, pos, more));
-		m_quantity = std::stoul(util.extractToken(str, pos, more));
-		m_widthField > util.getFieldWidth() ? m_widthField : m_widthField = util.getFieldWidth();
-		m_description = util.extractToken(str, pos, more);
+		if (str != "")
+		{
+			m_id = ++id_generator;
+			m_name = util.extractToken(str, pos, more);
+			m_serialNumber = std::stoul(util.extractToken(str, pos, more));
+			m_quantity = std::stoul(util.extractToken(str, pos, more));
+			m_widthField > util.getFieldWidth() ? m_widthField : m_widthField = util.getFieldWidth();
+			m_description = util.extractToken(str, pos, more);
+		}
 	}
 	/*Retruns station name*/
 	const std::string& Station::getItemName() const
@@ -48,6 +51,9 @@ namespace sdds
 		if (m_quantity > 0)
 		{
 			m_quantity--;
+		}
+		else {
+			std::cout << "Quantity: 0" << std::endl;
 		}
 	}
 	/*Displays Station object to ostream*/
