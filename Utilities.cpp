@@ -1,3 +1,11 @@
+// Name: Adnan Mohammed
+// Seneca Student ID: 174731216
+// Seneca email: amohammed109@myseneca.ca
+// Date of completion: 7th November, 2023
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include<iostream>

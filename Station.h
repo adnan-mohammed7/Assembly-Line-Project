@@ -1,3 +1,11 @@
+// Name: Adnan Mohammed
+// Seneca Student ID: 174731216
+// Seneca email: amohammed109@myseneca.ca
+// Date of completion: 7th November, 2023
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
+
 #pragma once
 #ifndef SDDS_STATION_H
 #define SDDS_STATION_H
