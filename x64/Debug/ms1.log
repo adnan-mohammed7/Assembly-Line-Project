@@ -1,5 +1,44 @@
-﻿  ms1.cpp
-  Station.cpp
-C:\Users\moham\source\repos\ms1\Station.cpp(33,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+﻿  CustomerOrder.cpp
+  ms2.cpp
+C:\Users\moham\source\repos\ms1\ms2.cpp(36,9): error C2065: 'CustomerOrder': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(36,2): error C2923: 'std::vector': 'CustomerOrder' is not a valid template type argument for parameter '_Ty'
+C:\Users\moham\source\repos\ms1\ms2.cpp(36): message : see declaration of 'CustomerOrder'
+C:\Users\moham\source\repos\ms1\ms2.cpp(36,2): error C2976: 'std::vector': too few template arguments
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vector(496): message : see declaration of 'std::vector'
+C:\Users\moham\source\repos\ms1\ms2.cpp(36): error C2641: cannot deduce template arguments for 'std::vector'
+C:\Users\moham\source\repos\ms1\ms2.cpp(36): error C2783: 'std::vector<_Ty,_Alloc> std::vector(void) noexcept(<expr>)': could not deduce template argument for '_Ty'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vector(675): message : see declaration of 'std::vector'
+C:\Users\moham\source\repos\ms1\ms2.cpp(36): error C2780: 'std::vector<_Ty,_Alloc> std::vector(std::vector<_Ty,_Alloc>)': expects 1 arguments - 0 provided
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.33.31629\include\vector(496): message : see declaration of 'std::vector'
+C:\Users\moham\source\repos\ms1\ms2.cpp(113,16): error C2065: 'CustomerOrder': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(113,49): error C2672: 'loadFromFile': no matching overloaded function found
+C:\Users\moham\source\repos\ms1\ms2.cpp(22,13): message : could be 'void loadFromFile(const char *,std::vector<T,std::allocator<_Ty>> &)'
+C:\Users\moham\source\repos\ms1\ms2.cpp(113,16): message : 'loadFromFile': invalid template argument for 'T', type expected
+C:\Users\moham\source\repos\ms1\ms2.cpp(22): message : see declaration of 'loadFromFile'
+C:\Users\moham\source\repos\ms1\ms2.cpp(118,8): error C2065: 'CustomerOrder': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(118,23): error C2065: 'order': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(118,29): error C2143: syntax error: missing ';' before ':'
+C:\Users\moham\source\repos\ms1\ms2.cpp(118,40): error C2143: syntax error: missing ';' before ')'
+C:\Users\moham\source\repos\ms1\ms2.cpp(119,4): error C2065: 'order': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(134,4): error C2065: 'CustomerOrder': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(134,18): error C2146: syntax error: missing ';' before identifier 'anOrder'
+C:\Users\moham\source\repos\ms1\ms2.cpp(134,18): error C3861: 'anOrder': identifier not found
+C:\Users\moham\source\repos\ms1\ms2.cpp(144,3): error C2065: 'CustomerOrder': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(144,17): error C2146: syntax error: missing ';' before identifier 'tmp'
+C:\Users\moham\source\repos\ms1\ms2.cpp(144,17): error C3861: 'tmp': identifier not found
+C:\Users\moham\source\repos\ms1\ms2.cpp(146,3): error C2065: 'tmp': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(152,3): error C2065: 'CustomerOrder': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(152,17): error C2146: syntax error: missing ';' before identifier 'tmp2'
+C:\Users\moham\source\repos\ms1\ms2.cpp(152,17): error C3861: 'tmp2': identifier not found
+C:\Users\moham\source\repos\ms1\ms2.cpp(153,3): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(157,3): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(159,3): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(164,12): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(167,3): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(169,9): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(173,12): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(177,4): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(180,12): error C2065: 'tmp2': undeclared identifier
+C:\Users\moham\source\repos\ms1\ms2.cpp(184,1): error C2036: 'std::vector': unknown size
+C:\Users\moham\source\repos\ms1\ms2.cpp(157,50): error C2296: '*': not valid as left operand has type 'allocator_traits<allocator_traits<_Alloc>::rebind_alloc<_Ty>>::size_type'
   Generating Code...
-  ms1.vcxproj -> C:\Users\moham\source\repos\ms1\x64\Debug\ms1.exe
