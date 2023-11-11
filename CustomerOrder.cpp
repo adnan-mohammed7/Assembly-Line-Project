@@ -86,15 +86,48 @@ namespace sdds
 	}
 
 	bool CustomerOrder::isOrderFilled() const {
-		return true;
+		bool result{true};
+		for (size_t i=0u; i<m_cntItem; i++)
+		{
+			if (!(m_lstItem[i]->m_isFilled)) {
+				result = false;
+			}
+		}
+		return result;
 	}
 
 	bool CustomerOrder::isItemFilled(const string& itemName) const {
-		return true;
+		bool result{true};
+		for (size_t i=0u; i<m_cntItem && !result; i++)
+		{
+			if (m_lstItem[i]->m_itemName == itemName)
+			{
+				result = (m_lstItem[i]->m_isFilled);
+			}
+		}
+		return result;
 	}
 
 	void CustomerOrder::fillItem(Station& station, ostream& os) {
-
+		bool matched{};
+		for (size_t i = 0u; i < m_cntItem && !matched; i++)
+		{
+			if (m_lstItem[i]->m_itemName == station.getItemName())
+			{
+				matched = true;
+				if (station.getQuantity() > 0)
+				{
+					station.updateQuantity();
+					m_lstItem[i]->m_isFilled = true;
+					m_lstItem[i]->m_serialNumber = station.getNextSerialNumber();
+					os << "    Filled " << m_name << ", " << m_product << " [" << m_lstItem[i]->m_itemName << "]" << endl;
+				}
+				else
+				{
+					os << "    Unable to fill " << m_name << ", " << m_product << " [" << m_lstItem[i]->m_itemName << "]" << endl;
+				}
+			}
+		}
 	}
 
 	void CustomerOrder::display(ostream& os) const {
