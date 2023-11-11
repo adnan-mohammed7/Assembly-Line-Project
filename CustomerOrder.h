@@ -33,7 +33,7 @@ namespace sdds
 	public:
 		//Constructors
 		CustomerOrder();
-		CustomerOrder(const std::string& filename);
+		CustomerOrder(const std::string& record);
 
 		//Copy Semantics
 		CustomerOrder(const CustomerOrder& rhs);
