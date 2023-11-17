@@ -17,6 +17,14 @@ namespace sdds
 	public:
 		Workstation();
 		Workstation(const std::string& station);
+
+		//Deleted Functions
+		Workstation(const Workstation& rhs) = delete;
+		Workstation& operator=(const Workstation& rhs) = delete;
+		Workstation(Workstation&& rhs) = delete;
+		Workstation& operator=(Workstation&& rhs) = delete;
+
+		//Instance Functions
 		void fill(std::ostream& os);
 		bool attemptToMoveOrder();
 		void setNextStation(Workstation* station);
