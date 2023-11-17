@@ -6,7 +6,6 @@
 // I confirm that I am the only author of this file
 //   and the content was created entirely by me.
 
-
 #pragma once
 #ifndef SDDS_CUSTOMER_ORDER_H
 #define SDDS_CUSTOMER_ORDER_H
