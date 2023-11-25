@@ -12,7 +12,7 @@ namespace sdds
 		size_t m_cntCustomerOrder{};
 		Workstation* m_firstStation{};
 	public:
-		LineManager(const std::string& file, const std::vector<Workstation*>& stations);
+		LineManager(const std::string& filename, const std::vector<Workstation*>& stations);
 		void reorderStations();
 		bool run(std::ostream& os);
 		void display(std::ostream& os) const;
