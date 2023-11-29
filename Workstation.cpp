@@ -1,3 +1,10 @@
+// Name: Adnan Mohammed
+// Seneca Student ID: 174731216
+// Seneca email: amohammed109@myseneca.ca
+// Date of completion: 29th November, 2023
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
 #define _CRT_SECURE_NO_WARNINGS
 
 #include <iostream>
@@ -21,25 +28,28 @@ namespace sdds
 	bool Workstation::attemptToMoveOrder()
 	{
 		bool moved{};
-		if (m_orders.front().isOrderFilled() || m_orders.front().isItemFilled(this->getItemName())
-			|| (this->getQuantity()) < 1);
+		if (m_orders.size() > 0)
 		{
-			moved = true;
-			if (m_pNextStation != nullptr)
+			if (m_orders.front().isItemFilled(this->getItemName()) || (this->getQuantity()) < 1)
 			{
-				*m_pNextStation += std::move(m_orders.front());
-			}
-			else {
-				if (m_orders.front().isOrderFilled())
+				moved = true;
+				if (m_pNextStation != nullptr)
 				{
-					g_completed.push_back(std::move(m_orders.front()));
+					*m_pNextStation += std::move(m_orders.front());
 				}
-				else
-				{
-					g_incomplete.push_back(std::move(m_orders.front()));
+				else {
+					if (m_orders.front().isOrderFilled())
+					{
+						g_completed.push_back(std::move(m_orders.front()));
+					}
+					else
+					{
+						g_incomplete.push_back(std::move(m_orders.front()));
+					}
 				}
+				m_orders.pop_front();
 			}
-		} 
+		}
 		return moved;
 	}
 	void Workstation::setNextStation(Workstation* station)
@@ -56,7 +66,6 @@ namespace sdds
 	}
 	void Workstation::display(std::ostream& os) const
 	{
-		//ITEM_NAME --> NEXT_ITEM_NAME
 		os << this->getItemName() << " --> ";
 		if (m_pNextStation != nullptr)
 		{
