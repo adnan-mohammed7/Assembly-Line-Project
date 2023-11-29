@@ -118,7 +118,7 @@ namespace sdds
 	Parameters: const string& itemName*/
 	bool CustomerOrder::isItemFilled(const std::string& itemName) const {
 		bool result{true};
-		for (size_t i=0u; i<m_cntItem && !result; i++)
+		for (size_t i=0u; i<m_cntItem && result; i++)
 		{
 			if (m_lstItem[i]->m_itemName == itemName)
 			{
@@ -137,17 +137,29 @@ namespace sdds
 		{
 			if (m_lstItem[i]->m_itemName == station.getItemName())
 			{
-				matched = true;
-				if (station.getQuantity() > 0)
+				if (m_lstItem[i]->m_isFilled == true)
 				{
-					station.updateQuantity();
-					m_lstItem[i]->m_isFilled = true;
-					m_lstItem[i]->m_serialNumber = station.getNextSerialNumber();
-					os << "    Filled " << m_name << ", " << m_product << " [" << m_lstItem[i]->m_itemName << "]" << std::endl;
+					matched = false;
 				}
 				else
 				{
-					os << "    Unable to fill " << m_name << ", " << m_product << " [" << m_lstItem[i]->m_itemName << "]" << std::endl;
+					matched = true;
+				}
+				
+				if (matched)
+				{
+					if (station.getQuantity() > 0)
+					{
+						station.updateQuantity();
+						m_lstItem[i]->m_isFilled = true;
+						m_lstItem[i]->m_serialNumber = station.getNextSerialNumber();
+						os << "    Filled " << m_name << ", " << m_product << " [" << m_lstItem[i]->m_itemName << "]" << std::endl;
+					}
+					else
+					{
+						matched = false;
+						os << "    Unable to fill " << m_name << ", " << m_product << " [" << m_lstItem[i]->m_itemName << "]" << std::endl;
+					}
 				}
 			}
 		}
@@ -160,12 +172,11 @@ namespace sdds
 		for (auto i=0u; i<m_cntItem; i++)
 		{
 			os << "[";
-			//os.width(6);
-			os <<std::setw(6) << std::setfill('0') << m_lstItem[i]->m_serialNumber << "] ";
-			//os.width(m_widthField);
+			os <<std::setw(6) << std::setfill('0') << std::right << m_lstItem[i]->m_serialNumber << "] ";
 			os << std::setfill(' ');
-			os << std::setw(m_widthField) << m_lstItem[i]->m_itemName << " - ";
-			m_lstItem[i]->m_isFilled ? os << "FILLED" : os << "TO BE FILLED" << std::endl;
+			os << std::setw(m_widthField) <<std::left << m_lstItem[i]->m_itemName << " - ";
+			m_lstItem[i]->m_isFilled ? os << "FILLED" : os << "TO BE FILLED";
+			os << std::endl;
 		}
 	}
 }
