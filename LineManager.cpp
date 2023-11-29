@@ -1,5 +1,13 @@
+// Name: Adnan Mohammed
+// Seneca Student ID: 174731216
+// Seneca email: amohammed109@myseneca.ca
+// Date of completion: 29th November, 2023
+//
+// I confirm that I am the only author of this file
+//   and the content was created entirely by me.
 #define _CRT_SECURE_NO_WARNINGS
 
+#include <iostream>
 #include <fstream>
 #include <memory>
 #include <algorithm>
@@ -28,13 +36,21 @@ namespace sdds
 					more = true;
 					pos = 0;
 					getline(file, line);
+					string name = (util.extractToken(line, pos, more));
 
-					Workstation* newStation = new Workstation(util.extractToken(line, pos, more));
+					auto first = find_if(stations.begin(), stations.end(), [&](const Workstation* it) {
+						return((*it).getItemName() == name);
+						});
+
 					if (more)
 					{
-						newStation->setNextStation(new Workstation(util.extractToken(line, pos, more)));
+						name = (util.extractToken(line, pos, more));
+						auto second = find_if(stations.begin(), stations.end(), [&](const Workstation* it) {
+							return((*it).getItemName() == name);
+							});
+						(*first)->setNextStation(*second);
 					}
-					m_activeLine.push_back(move(newStation));
+					m_activeLine.push_back(*first);
 				}
 				else
 				{
@@ -44,16 +60,6 @@ namespace sdds
 			for_each(m_activeLine.begin(), m_activeLine.end(), [=](Workstation* set) {
 				bool matched{};
 
-				/*for_each(m_activeLine.begin(), m_activeLine.end(), [&](Workstation* subSet) {
-					if (set != nullptr && subSet->getNextStation() != nullptr)
-					{
-						string a1 = set->getItemName();
-						string a2 = (subSet->getNextStation()->getItemName());
-						if (a1 == a2) {
-							matched = true;
-						}
-					}
-					});*/
 				matched = any_of(m_activeLine.begin(), m_activeLine.end(), [=](Workstation* subSet) {
 					bool result{};
 					if (set != nullptr && subSet->getNextStation() != nullptr) {
@@ -103,8 +109,6 @@ namespace sdds
 					{
 						if (((*it)->getNextStation())->getItemName() == (*j)->getItemName())
 						{
-							/*it[1] = *j;
-							(*j) = temp;*/
 							it[1] = j[0];
 							j[0] = temp;
 							swapped = true;
@@ -113,20 +117,28 @@ namespace sdds
 				}
 			}
 		}
-		vector<Workstation> sizeaa();
 	}
 	bool LineManager::run(std::ostream& os)
 	{
 		static int iterationCount{};
 		bool filled{};
 		os << "Line Manager Iteration: " << ++iterationCount << endl;
-		*m_activeLine[0] += std::move(g_pending[0]);
+		if (g_pending.size() > 0)
+		{
+			*m_firstStation += std::move(g_pending[0]);
+			g_pending.pop_front();
+		}
+		for (auto it = m_activeLine.begin(); it != m_activeLine.end(); it++)
+		{	
+			(*it)->fill(os);
+		}
 		for (auto it = m_activeLine.begin(); it != m_activeLine.end(); it++)
 		{
-			(*it)->fill(os);
-			filled = (*it)->attemptToMoveOrder();
-			
+			(*it)->attemptToMoveOrder();
 		}
+		
+		filled = g_pending.size() == 0 && (g_completed.size() + g_incomplete.size()) == m_cntCustomerOrder;
+		
 		return filled;
 	}
 	void LineManager::display(std::ostream& os) const
