@@ -15,6 +15,7 @@
 
 namespace sdds
 {
+	/*Store the customer order in different category*/
 	extern std::deque<CustomerOrder>g_pending;
 	extern std::deque<CustomerOrder>g_completed;
 	extern std::deque<CustomerOrder>g_incomplete;

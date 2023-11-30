@@ -12,11 +12,16 @@
 
 namespace sdds
 {
+	/*To store the orders in different category*/
 	std::deque<CustomerOrder>g_pending{};
 	std::deque<CustomerOrder>g_completed{};
 	std::deque<CustomerOrder>g_incomplete{};
 
+	/*default constructor*/
 	Workstation::Workstation(){}
+
+	/*One-Argument constructor Initializes the Workstation object
+	Parameters: const string& station*/
 	Workstation::Workstation(const std::string& station) : Station(station){}
 	void Workstation::fill(std::ostream& os)
 	{
@@ -25,6 +30,9 @@ namespace sdds
 			m_orders.front().fillItem(*this, os);
 		}
 	}
+
+	/*Move the order from current workstation to next station 
+	in line, returns true if order is moved*/
 	bool Workstation::attemptToMoveOrder()
 	{
 		bool moved{};
@@ -52,6 +60,8 @@ namespace sdds
 		}
 		return moved;
 	}
+
+	/*Updates the next station ptr in current workstation*/
 	void Workstation::setNextStation(Workstation* station)
 	{
 		if (station != nullptr)
@@ -60,20 +70,24 @@ namespace sdds
 			station = nullptr;
 		}
 	}
+
+	/*Returns a ptr to next workstation in current object*/
 	Workstation* Workstation::getNextStation() const
 	{
 		return m_pNextStation;
 	}
+
+	/*Displays a single workstation object
+	Parameters: ostream& os*/
 	void Workstation::display(std::ostream& os) const
 	{
 		os << this->getItemName() << " --> ";
-		if (m_pNextStation != nullptr)
-		{
-
-		}
 		os << (m_pNextStation != nullptr ? m_pNextStation->getItemName() : "End of Line");
 		os << "\n";
 	}
+
+	/*Adds a order to the current object and returns reference current object
+	Parameters: Customer&& order*/
 	Workstation& Workstation::operator+=(CustomerOrder&& newOrder)
 	{
 		m_orders.push_back(std::move(newOrder));
