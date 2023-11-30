@@ -18,6 +18,9 @@ using namespace std;
 
 namespace sdds
 {
+	/*Two-Argument Constructor: Creates a workstation line by the arguments received
+	Parameters: const string& filename
+	const vector<Workstation*>*/
 	LineManager::LineManager(const std::string& filename, const std::vector<Workstation*>& stations)
 	{
 		ifstream file(filename);
@@ -57,6 +60,8 @@ namespace sdds
 					file.get();
 				}
 			}
+
+			//Identifying and setting the first station
 			for_each(m_activeLine.begin(), m_activeLine.end(), [=](Workstation* set) {
 				bool matched{};
 
@@ -79,8 +84,11 @@ namespace sdds
 		}
 		
 	}
+
+	/*Rearranges workstation in current object in correct order*/
 	void LineManager::reorderStations()
 	{
+		//Sets the first station
 		Workstation* temp{};
 		if (m_activeLine[0] != m_firstStation) {
 			temp = m_activeLine[0];
@@ -96,6 +104,8 @@ namespace sdds
 			}
 			m_activeLine[0] = m_firstStation;
 		}
+
+		//Rearranges all the Workstation according to first station
 		for (auto it = m_activeLine.begin(); it != m_activeLine.end(); it++)
 		{
 			temp = nullptr;
@@ -118,6 +128,10 @@ namespace sdds
 			}
 		}
 	}
+
+	/*Performs fill and move operation on each workstation in line, returns true if all
+	the orders have been served and no further service is required else false
+	Parameters: ostream& os*/
 	bool LineManager::run(std::ostream& os)
 	{
 		static int iterationCount{};
@@ -141,6 +155,9 @@ namespace sdds
 		
 		return filled;
 	}
+
+	/*Display all the workstation in current object
+	Parameters: ostream& os*/
 	void LineManager::display(std::ostream& os) const
 	{
 		for (auto it=m_activeLine.begin(); it!=m_activeLine.end(); it++)
