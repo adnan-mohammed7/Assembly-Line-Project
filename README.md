@@ -1,7 +1,34 @@
-# Project Overview
+# Assembly Line Project
 
-The purpose of this term project is to put your C++ Object Oriented skills to practice by developing a simulation of an assembly line with any number of stations. A line with 3 Stations is illustrated in the figure below.
+## Project Overview
 
-![assemblyline](https://github.com/adnan-mohammed7/Assembly-Line-Project/assets/141707043/0d38e64f-014b-4a65-9184-b01bfeda995e)
+The Assembly Line Project is a term project that provides an opportunity to apply C++ Object-Oriented skills by simulating an assembly line with any number of stations. The project illustrates a line with three stations, and its purpose is to manage customer orders efficiently through the assembly process.
 
-The assembly line in this solution consists of a set of workstations each of which holds a set of stock items, which are specific to the station. A line manager moves customer orders along the line filling the orders at each station, as requested. Each customer order consists of a list of items that need to be filled. Each station processes a queue of orders by filling the next order in the queue if that order requests the station's item and that item is in stock. The line manager keeps moving the customer orders from station to station until all orders have been processed. Any station that has used all the items in stock cannot fill any more orders. At the end of the line orders are either completed or incomplete due to a lack of inventory at one or more stations. The simulator lists the completed orders and those that are incomplete once the line manager has finished processing all orders.
+![Assembly Line](https://github.com/adnan-mohammed7/Assembly-Line-Project/assets/141707043/0d38e64f-014b-4a65-9184-b01bfeda995e)
+
+In this solution, the assembly line consists of a series of workstations, each holding a set of stock items specific to the station. A line manager navigates customer orders along the line, filling orders at each station based on the items requested. Each customer order comprises a list of items to be filled, and each station processes a queue of orders.
+
+## Key Features
+
+- **Station Workflows:** Each station processes a queue of orders by filling the next order if it requests the station's item and the item is in stock.
+
+- **Line Manager:** The line manager moves customer orders from station to station until all orders have been processed.
+
+- **Inventory Tracking:** Stations keep track of inventory, and orders are completed or marked incomplete based on the availability of items.
+
+## Getting Started
+
+To run the Assembly Line Project:
+
+1. **Clone the repository:**
+   * Link: git clone https://github.com/adnan-mohammed7/Assembly-Line-Project.git
+     
+2. Build and run the project using your preferred C++ compiler.
+
+3. Follow on-screen instructions for simulating the assembly line.
+
+Simulation Output
+At the end of the simulation, the system will list completed orders and those that are incomplete due to a lack of inventory at one or more stations.
+
+Contributing
+If you'd like to contribute to the project or report issues, feel free to create a pull request or open an issue on the GitHub repository.
