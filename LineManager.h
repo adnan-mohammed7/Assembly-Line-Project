@@ -1,10 +1,7 @@
-// Name: Adnan Mohammed
-// Seneca Student ID: 174731216
-// Seneca email: amohammed109@myseneca.ca
-// Date of completion: 29th November, 2023
-//
-// I confirm that I am the only author of this file
-//   and the content was created entirely by me.
+/*
+Name: Adnan Mohammed
+Email: mohammedadnanaz7@gmail.com
+*/
 #pragma once
 #ifndef SDDS_LINEMANAGER_H
 #define SDDS_LINEMANAGER_H
